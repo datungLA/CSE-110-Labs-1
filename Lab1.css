@@ -1,3 +1,7 @@
+body {
+    padding: 0;
+    margin: 0;
+}
 #section1 {
     background-color: rgb(245, 240, 230);
     scroll-margin-top: 150px;
@@ -13,6 +17,7 @@
     background-color: rgb(245, 240, 230);
     scroll-margin-top: 150px;
 }
+
 #section3 div {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -51,4 +56,30 @@ menu a {
 menu a:hover {
     background-color: #182b49;
     color: white;
+}
+
+section img {
+    max-width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    menu {
+        display: none;
+    }
+
+    #top-logo {
+        max-width: 75%;
+    }
+
+    header {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    #section3 div {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
