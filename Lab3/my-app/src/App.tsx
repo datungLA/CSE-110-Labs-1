@@ -1,27 +1,17 @@
-import React, { useState, useContext } from 'react';
-import './App.css';
-import InputField from './components/InputField';
-import NoteList from './components/NoteList';
-import { Note, initialNoteValue } from "./components/types";
-import { dummyNoteList } from './components/constant';
-import { ThemeContext, themes } from './components/themeContext';
-function App() {
-  const [note, setNote] = useState<Note>(initialNoteValue);
-  const [notes, setNotes] = useState<Note[]>(dummyNoteList.map(note => ({ ...note, isLiked: false, isDone: false })));
-  const handleAdd = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (note) {
-      setNotes([...notes, { id: Date.now(), title: note.title, label: note.label, content: note.content, isLiked: false, isDone: false }]);
-      setNote(initialNoteValue);
-    }
-  }
+import "./App.css";
+import { ToDoList } from "./toDoList";
+import { Route, Routes } from "react-router-dom";
+import { StickyNotes } from "./stickyNote";
 
+const App = () => {
   return (
-    <div className="app-container">
-      <InputField note={note} setNote={setNote} handleAdd={handleAdd} />
-      <NoteList notes={notes} setNotes={setNotes} />
+    <div>
+      <Routes>
+        <Route path="/" element={<StickyNotes />} />
+        <Route path="/todolist" element={<ToDoList />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;

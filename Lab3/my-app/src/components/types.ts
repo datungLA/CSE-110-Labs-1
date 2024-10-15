@@ -22,3 +22,7 @@ export const initialNoteValue: Note = {
     isLiked: false,
     isDone: false,
 };
+
+
+export type GroceryItem = { name: string; isPurchased: boolean };
+
