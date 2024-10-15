@@ -4,7 +4,6 @@ import InputField from './components/InputField';
 import NoteList from './components/NoteList';
 import { Note, initialNoteValue } from "./components/types";
 import { dummyNoteList } from './components/constants';
-import { ThemeContext, themes } from './components/themeContext';
 
 export const StickyNotes = () => {
     const [note, setNote] = useState<Note>(initialNoteValue);
