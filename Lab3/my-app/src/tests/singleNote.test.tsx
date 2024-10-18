@@ -137,3 +137,74 @@ describe('Deleting StickyNote', () => {
         expect(mockSetNotes).toHaveBeenCalledWith([anotherNote]);  // The remaining notes after deletion
     });
 })
+
+describe('Liking StickyNote', () => {
+    it('toggles the favorite status of a note when the like button is clicked', () => {
+        // Define a mock note
+        const mockNote: Note = {
+            id: 1,
+            title: "Test Note",
+            content: "This is a test note content.",
+            label: "work" as Label,
+            isLiked: false,
+            isDone: false
+        };
+
+        // Mock setNotes function
+        const mockSetNotes = jest.fn();
+
+        // Render the SingleNote component
+        render(<SingleNote note={mockNote} notes={[mockNote]} setNotes={mockSetNotes} />);
+
+        // Find the like button
+        const likeButton = screen.getByText("♡");
+
+        // Simulate clicking the like button
+        fireEvent.click(likeButton);
+
+        // Assert that setNotes was called with the updated note list (with the liked status toggled)
+        expect(mockSetNotes).toHaveBeenCalledWith([
+            {
+                id: 1,
+                title: "Test Note",
+                content: "This is a test note content.",
+                label: "work" as Label,
+                isLiked: true,
+                isDone: false
+            }])
+    })
+    it('updates the favorite status of a note when the like button is clicked again', () => {
+        // Define a mock note
+        const mockNote: Note = {
+            id: 1,
+            title: "Test Note",
+            content: "This is a test note content.",
+            label: "work" as Label,
+            isLiked: true,
+            isDone: false
+        };
+
+        // Mock setNotes function
+        const mockSetNotes = jest.fn();
+
+        // Render the SingleNote component
+        render(<SingleNote note={mockNote} notes={[mockNote]} setNotes={mockSetNotes} />);
+
+        // Find the like button
+        const likeButton = screen.getByText("❤️");
+
+        // Simulate clicking the like button again
+        fireEvent.click(likeButton);
+
+        // Assert that setNotes was called with the updated note list (with the liked status toggled)
+        expect(mockSetNotes).toHaveBeenCalledWith([
+            {
+                id: 1,
+                title: "Test Note",
+                content: "This is a test note content.",
+                label: "work" as Label,
+                isLiked: false,
+                isDone: false
+            }])
+    })
+})
