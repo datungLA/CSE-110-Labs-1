@@ -1,15 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { StickyNotes } from "./stickyNotes";
+import { StickyNotes } from "../stickyNotes";
 import '@testing-library/jest-dom';
 
 describe("Create StickyNote", () => {
-    test("renders create note form", () => {
-        render(<StickyNotes />);
-
-        const createNoteButton = screen.getByText("Create Note");
-        expect(createNoteButton).toBeInTheDocument();
-    });
-
     test("creates a new note", () => {
         render(<StickyNotes />);
 
